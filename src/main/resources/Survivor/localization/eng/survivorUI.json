@@ -1,0 +1,22 @@
+{
+  "UnlockButton": {
+    "TEXT": [
+      "The Survivor",
+      "Unlock"
+    ]
+  },
+  "Survivor": {
+    "TEXT": [
+      "You check your equipment for the final time.",
+      "The Survivor",
+      "Survived what? Survivor of what? Only he knows..."
+    ]
+  },
+  "ModInfo": {
+    "TEXT": [
+      "The Survivor",
+      "TheBigCheese",
+      "The Survival is a custom Slay the Spire character that brings a survival-genre spin to the game."
+    ]
+  }
+}

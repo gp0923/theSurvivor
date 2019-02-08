@@ -1,0 +1,26 @@
+{
+  "OVERLOAD": {
+    "NAMES": [
+      "overload",
+      "overloads",
+      "overloaded"
+    ],
+    "DESCRIPTION": "Pay extra [E] for a more powerful effect; often #ydegrades or #yrepairs the card"
+  },
+  "DEGRADE": {
+    "NAMES": [
+      "degrade",
+      "degrades",
+      "degraded"
+    ],
+    "DESCRIPTION": "This card will #ytransform into a degraded version of itself, but can be repaired. An upgraded card will instead lose its upgrade."
+  },
+  "REPAIR": {
+    "NAMES": [
+      "repair",
+      "repairs",
+      "repaired"
+    ],
+    "DESCRIPTION": "#yTransforms a degraded card into its unupgraded version"
+  }
+}

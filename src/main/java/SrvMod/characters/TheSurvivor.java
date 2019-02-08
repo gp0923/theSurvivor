@@ -22,7 +22,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.util.ArrayList;
 
-public class theSurvivor extends CustomPlayer {
+public class TheSurvivor extends CustomPlayer {
 
     public static final int ENERGY_PER_TURN = 3;
     public static final int STARTING_HP = 80;
@@ -35,21 +35,34 @@ public class theSurvivor extends CustomPlayer {
     public static final String SURVIVOR_SHOULDER_2 = "Survivor/images/char/shoulder2.png"; // campfire pose
     public static final String SURVIVOR_SHOULDER_1 = "Survivor/images/char/shoulder.png"; // another campfire pose
     public static final String SURVIVOR_CORPSE = "Survivor/images/char/corpse.png"; // dead corpse
+
+    //TODO Create a custom skeleton
     public static final String SURVIVOR_SKELETON_ATLAS = "Survivor/images/char/idle/Survivor.atlas"; // spine animation atlas
     public static final String SURVIVOR_SKELETON_JSON = "Survivor/images/char/idle/Survivor.json"; // spine animation json
     private static final String SURVIVOR_ANIMATION = "Idle";// Sprite / Idle
-    private static final String[] ORB_TEXTURES = {}; //TODO
+    private static final String[] ORB_TEXTURES = {
+            "Survivor/images/ui/epanel/layer6.png",
+            "Survivor/images/ui/epanel/layer5.png",
+            "Survivor/images/ui/epanel/layer4.png",
+            "Survivor/images/ui/epanel/layer3.png",
+            "Survivor/images/ui/epanel/layer2.png",
+            "Survivor/images/ui/epanel/layer1.png",
+            "Survivor/images/ui/epanel/layer5d.png",
+            "Survivor/images/ui/epanel/layer4d.png",
+            "Survivor/images/ui/epanel/layer3d.png",
+            "Survivor/images/ui/epanel/layer2d.png",
+            "Survivor/images/ui/epanel/layer1d.png"
+    }; //TODO create custom orb
 
-    //TODO Set up language pack
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("Survivor");
-    public static final String[] TEXT = uiStrings.TEXT; //The title and flavor strings for the theSurvivor
+    public static final String[] TEXT = uiStrings.TEXT; //The title and flavor strings for the TheSurvivor
 
     private static final String ORB_VFX = "Survivor/images/char/orb/energy_green_VFX.png";
     private static final float[] LAYER_SPEED =
             {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
 
-    public theSurvivor(String name){
-        super(name, Enum.SURVIVOR_CLASS, null, ORB_VFX, LAYER_SPEED, null, null);
+    public TheSurvivor(String name){
+        super(name, Enum.SURVIVOR_CLASS, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
         SurvivorMod.log("Creating the character...");
 
         initializeClass(null,
@@ -74,24 +87,24 @@ public class theSurvivor extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add("theSurvivor:Strike");
-        retVal.add("theSurvivor:Strike");
-        retVal.add("theSurvivor:Strike");
-        retVal.add("theSurvivor:Strike");
-        retVal.add("theSurvivor:Defend");
-        retVal.add("theSurvivor:Defend");
-        retVal.add("theSurvivor:Defend");
-        retVal.add("theSurvivor:Defend");
-        retVal.add("theSurvivor:Strike"); //TODO: Change to appropriate cards
-        retVal.add("theSurvivor:Defend");
+        retVal.add("Survivor:Strike");
+        retVal.add("Survivor:Strike");
+        retVal.add("Survivor:Strike");
+        retVal.add("Survivor:Strike");
+        retVal.add("Survivor:Defend");
+        retVal.add("Survivor:Defend");
+        retVal.add("Survivor:Defend");
+        retVal.add("Survivor:Defend");
+        retVal.add("Survivor:Strike"); //TODO: Change to appropriate cards
+        retVal.add("Survivor:Defend");
         return retVal;
     }
 
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add("BagOfPreparation"); //TODO: Create starting relic.
-        UnlockTracker.markRelicAsSeen("BagOfPreparation");
+        retVal.add("Bag of Preparation"); //TODO: Create starting relic.
+        UnlockTracker.markRelicAsSeen("Bag of Preparation");
         return retVal;
     }
 
@@ -120,7 +133,6 @@ public class theSurvivor extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-
         return Enum.SURVIVOR_GREEN;
     }
 
@@ -170,17 +182,17 @@ public class theSurvivor extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() {
-        return new theSurvivor(this.name);
+        return new TheSurvivor(this.name);
     }
 
     @Override
     public String getSpireHeartText() {
-        return null;
+        return TEXT[0];
     }
 
     @Override
     public Color getSlashAttackColor() {
-        return null;
+        return SurvivorMod.SURVIVOR_GREEN;
     }
 
     @Override

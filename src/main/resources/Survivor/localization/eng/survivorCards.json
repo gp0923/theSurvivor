@@ -1,9 +1,9 @@
 {
-  "Strike_Srv": {
+  "Survivor:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "Defend_Srv": {
+  "Survivor:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! block."
   }

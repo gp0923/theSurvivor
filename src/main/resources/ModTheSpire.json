@@ -3,7 +3,7 @@
   "name": "The Survivor",
   "author_list": ["TheBigCheese"],
   "description": "A mod that adds a STS class with a survival genre spin.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "sts_version": "01-23-2019",
   "mts_version": "3.4.0",
   "dependencies": ["basemod"]

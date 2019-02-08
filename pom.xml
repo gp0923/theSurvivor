@@ -2,9 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>SrvMod</groupId>
-    <artifactId>SurvivorMod</artifactId>
+    <artifactId>SrvMod</artifactId>
     <version>v0.1.0</version>
     <packaging>jar</packaging>
+
+    <name>Slay the Spire Survivor Mod By TheBigCheese</name>
+    <description>A mod that adds a STS class with a survival genre spin.</description>
 
     <!-- These are the dependencies that were placed in the libs folder.
              Try to keep the version numbers the same as from their GitHub.  -->
@@ -57,8 +60,10 @@
                             <target>
                                 <copy file="target/SurvivorMod.jar"
                                       tofile="../lib/SurvivorMod.jar"/>
+                                <!--
                                 <copy file="target/SurvivorMod.jar"
-                                      tofile="C:/Program\ Files\ (x86)/Steam/SteamApps/SlayTheSpire/mods/SurvivorMod.jar"/>
+                                      tofile="C:/Program Files (x86)/Steam/SteamApps/common/SlayTheSpire/mods/SurvivorMod.jar"/>
+                                      -->
                             </target>
                         </configuration>
                         <goals>
@@ -69,6 +74,4 @@
             </plugin>
         </plugins>
     </build>
-    <name>Slay the Spire Survivor Mod By TheBigCheese</name>
-    <description>A mod that adds a STS class with a survival genre spin.</description>
 </project>
