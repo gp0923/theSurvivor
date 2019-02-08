@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>SrvMod</groupId>
+    <artifactId>SurvivorMod</artifactId>
+    <version>v0.1.0</version>
+    <packaging>jar</packaging>
+
+    <!-- These are the dependencies that were placed in the libs folder.
+             Try to keep the version numbers the same as from their GitHub.  -->
+    <dependencies>
+        <dependency>
+            <groupId>com.megacrit.cardcrawl</groupId>
+            <artifactId>slaythespire</artifactId>
+            <version>906</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>basemod</groupId>
+            <artifactId>basemod</artifactId>
+            <version>3.2.2</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>ModTheSpire</artifactId>
+            <version>3.1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <!-- This is how your code is packaged into the jar file-->
+    <build>
+        <!-- Change this to match your mods name -->
+        <finalName>SurvivorMod</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <copy file="target/SurvivorMod.jar"
+                                      tofile="../lib/SurvivorMod.jar"/>
+                                <copy file="target/SurvivorMod.jar"
+                                      tofile="C:/Program\ Files\ (x86)/Steam/SteamApps/SlayTheSpire/mods/SurvivorMod.jar"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <name>Slay the Spire Survivor Mod By TheBigCheese</name>
+    <description>A mod that adds a STS class with a survival genre spin.</description>
+</project>

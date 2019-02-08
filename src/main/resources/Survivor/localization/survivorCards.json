@@ -1,0 +1,10 @@
+{
+  "Strike_Srv": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "Defend_Srv": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! block."
+  }
+}
