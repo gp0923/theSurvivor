@@ -1,4 +1,4 @@
-package SrvMod.cards;
+package SrvMod.cards.helperCards;
 
 import basemod.abstracts.CustomCard;
 

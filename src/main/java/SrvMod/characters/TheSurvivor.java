@@ -96,7 +96,7 @@ public class TheSurvivor extends CustomPlayer {
         retVal.add("Survivor:Defend");
         retVal.add("Survivor:Defend");
         retVal.add("Survivor:Strike"); //TODO: Change to appropriate cards
-        retVal.add("Survivor:Defend");
+        retVal.add("Survivor:Scavenge");
         return retVal;
     }
 

@@ -1,9 +1,9 @@
 {
-  "OVERLOAD": {
+  "EXERT": {
     "NAMES": [
-      "overload",
-      "overloads",
-      "overloaded"
+      "exert",
+      "exerts",
+      "exerted"
     ],
     "DESCRIPTION": "Pay extra [E] for a more powerful effect; often #ydegrades or #yrepairs the card"
   },
@@ -21,6 +21,24 @@
       "repairs",
       "repaired"
     ],
-    "DESCRIPTION": "#yTransforms a degraded card into its unupgraded version"
+    "DESCRIPTION": "#yTransforms a degraded card into its unupgraded version."
+  },
+
+  "CONSUME": {
+    "NAMES": [
+      "consume",
+      "consumes",
+      "consumed"
+    ],
+    "DESCRIPTION": "Consumed cards are permanently removed from your deck."
+  },
+
+  "CRAFT": {
+    "NAMES": [
+      "craft",
+      "crafts",
+      "crafted"
+    ],
+    "DESCRIPTION": "Crafting a card adds it to your collection."
   }
 }

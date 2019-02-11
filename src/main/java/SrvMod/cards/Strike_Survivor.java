@@ -1,5 +1,6 @@
 package SrvMod.cards;
 
+import SrvMod.cards.helperCards.MetricsCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -32,7 +33,8 @@ public class Strike_Survivor extends MetricsCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
+        AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(
+                m,
                 new DamageInfo(p, this.damage, this.damageTypeForTurn),
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
@@ -43,10 +45,5 @@ public class Strike_Survivor extends MetricsCard {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
         }
-    }
-
-    @Override
-    public boolean isStrike() {
-        return true;
     }
 }

@@ -1,5 +1,6 @@
 package SrvMod.cards;
 
+import SrvMod.cards.helperCards.MetricsCard;
 import SrvMod.patches.Enum;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -30,14 +31,14 @@ public class Defend_Survivor extends MetricsCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));;
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_BLOCK);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
         }
     }
 

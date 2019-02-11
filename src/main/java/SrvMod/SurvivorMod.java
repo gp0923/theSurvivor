@@ -1,14 +1,23 @@
 package SrvMod;
 
 import SrvMod.cards.Defend_Survivor;
+import SrvMod.cards.Scavenge;
 import SrvMod.cards.Strike_Survivor;
+import SrvMod.cards.improvisedCards.ImprovisedPoison;
+import SrvMod.cards.improvisedCards.ImprovisedShield;
+import SrvMod.cards.improvisedCards.ImprovisedWeapon;
 import SrvMod.characters.TheSurvivor;
+import SrvMod.patches.SurvivorTags;
+import SrvMod.variables.ExertBlock;
+import SrvMod.variables.ExertDamage;
+import SrvMod.variables.ExertMagicNumber;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -21,7 +30,10 @@ import SrvMod.patches.Enum;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
+
 
 @SpireInitializer
 public class SurvivorMod implements PostInitializeSubscriber, EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, PreStartGameSubscriber,
@@ -33,6 +45,8 @@ public class SurvivorMod implements PostInitializeSubscriber, EditCardsSubscribe
     public static String[] TEXT;
 
     public static final Color SURVIVOR_GREEN = CardHelper.getColor(34f, 139f, 34f);
+
+    public static ArrayList<AbstractCard> improvisedCardList;
 
     public SurvivorMod(){
 
@@ -61,15 +75,11 @@ public class SurvivorMod implements PostInitializeSubscriber, EditCardsSubscribe
                 "Survivor/images/cardui/description_green_orb.png");
                 //TODO make custom card frames
 
+        improvisedCardList = new ArrayList<>();
+
         log("Survivor mod constructor");
-
-        new SurvivorMod();  //This is necessary but I don't get why we just ditch the reference
+        new SurvivorMod();  //Subscribes the mod to basemod
         log("================Finished Initializing the Survivor================");
-    }
-
-    @Override
-    public void receivePreStartGame() {
-        //TODO add things that need to be reset at the beginning of each game
     }
 
     @Override
@@ -91,9 +101,50 @@ public class SurvivorMod implements PostInitializeSubscriber, EditCardsSubscribe
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addCard(new Defend_Survivor());
-        BaseMod.addCard(new Strike_Survivor());
-        //TODO add other cards
+        //Add Dynamic Variables
+        BaseMod.addDynamicVariable(new ExertBlock());
+        BaseMod.addDynamicVariable(new ExertDamage());
+        BaseMod.addDynamicVariable(new ExertMagicNumber());
+
+        //Add Cards
+        addTaggedCard(new Defend_Survivor());
+        addTaggedCard(new Strike_Survivor());
+        addTaggedCard(new ImprovisedWeapon());
+        addTaggedCard(new ImprovisedShield());
+        addTaggedCard(new ImprovisedPoison());
+        addTaggedCard(new Scavenge());
+    }
+
+    /**
+     * A wrapper for the addCard method that also populates lists based on tags (for getting random cards).
+     * Call this instead of BaseMod.AddCard(c)
+     * @param c The card to add
+     */
+    private void addTaggedCard(AbstractCard c){
+        BaseMod.addCard(c);
+
+        //Improvised Cards
+        if (c.hasTag(SurvivorTags.IMPROVISED)){
+            improvisedCardList.add(c);
+        }
+    }
+
+    /**
+     * Returns an array of cards with the Improvise tag. Cards will be unique.
+     * If there are not enough cards to randomly choose the requested amount,
+     * the return array will contain one of each improvise card.
+     * @param amount The number of cards to generate.
+     * @return An array of improvise cards. Copy the cards when using them.
+     */
+    public static AbstractCard[] getRandomImprovisedCards(int amount){
+        if (improvisedCardList.size() <= amount)
+            return improvisedCardList.toArray(new AbstractCard[improvisedCardList.size()]);
+        AbstractCard[] temp = new AbstractCard[amount];
+        int[] rands = new Random().ints(0, improvisedCardList.size()).distinct().limit(amount).toArray();
+        for (int i = 0; i < amount; i++){
+            temp[i] = improvisedCardList.get(rands[i]);
+        }
+        return temp;
     }
 
     @Override
@@ -203,5 +254,10 @@ public class SurvivorMod implements PostInitializeSubscriber, EditCardsSubscribe
     @Override
     public void receiveSetUnlocks() {
         //TODO
+    }
+
+    @Override
+    public void receivePreStartGame() {
+        //TODO add things that need to be reset at the beginning of each game
     }
 }
